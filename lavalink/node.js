@@ -10,9 +10,9 @@ function createShoukaku(Client) {
         auth: config.lavalink.auth,
         secure: config.lavalink.secure
     }
-]
+];
 
-    const shoukaku = new Shoukaku(client, nodes {
+    const shoukaku = new Shoukaku(client, nodes, {
         moveOnDisconnect: true,
         resume: true,
         resumeTimeout: 30,
