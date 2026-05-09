@@ -14,63 +14,58 @@ const client = new Client({
 client.commands = new Collection();
 
 // Lavalink
-const nodes = [
-  {
-    name: config.lavalink.name,
-    url: config.lavalink.url,
-    auth: config.lavalink.auth,
-    secure: config.lavalink.secure
-  }
-];
+const nodes = [{
+  name: config.lavalink.name,
+  url: config.lavalink.url,
+  auth: config.lavalink.auth,
+  secure: config.lavalink.secure
+}];
 
 client.shoukaku = new Shoukaku(client, nodes, {
   moveOnDisconnect: true,
   resume: true
 });
 
-// Ready
+// READY
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-// Interaction handler (commands + buttons)
-client.on("interactionCreate", async (interaction) => {
-  if (interaction.isChatInputCommand()) {
-    const cmd = client.commands.get(interaction.commandName);
-    if (cmd) cmd.execute(interaction, client);
+// INTERACTIONS
+client.on("interactionCreate", async (i) => {
+  if (i.isChatInputCommand()) {
+    const cmd = client.commands.get(i.commandName);
+    if (cmd) cmd.execute(i, client);
   }
 
-  if (interaction.isButton()) {
-    const { customId, guildId } = interaction;
-
-    const player = playerManager.getPlayer(guildId);
-    const queue = playerManager.getQueue(guildId);
+  if (i.isButton()) {
+    const player = playerManager.getPlayer(i.guildId);
+    const queue = playerManager.getQueue(i.guildId);
 
     if (!player) return;
 
-    switch (customId) {
+    switch (i.customId) {
       case "pause":
         player.setPaused(true);
-        return interaction.reply({ content: "Paused ⏸", ephemeral: true });
+        return i.reply({ content: "Paused", ephemeral: true });
 
       case "resume":
         player.setPaused(false);
-        return interaction.reply({ content: "Resumed ▶", ephemeral: true });
+        return i.reply({ content: "Resumed", ephemeral: true });
 
       case "skip":
         player.stopTrack();
-        return interaction.reply({ content: "Skipped ⏭", ephemeral: true });
+        return i.reply({ content: "Skipped", ephemeral: true });
 
       case "stop":
         queue.clear();
-        player.stopTrack();
         player.disconnect();
-        playerManager.delete(guildId);
-        return interaction.reply({ content: "Stopped ⛔", ephemeral: true });
+        playerManager.delete(i.guildId);
+        return i.reply({ content: "Stopped", ephemeral: true });
 
       case "loop":
         queue.loop = !queue.loop;
-        return interaction.reply({ content: `Loop: ${queue.loop}`, ephemeral: true });
+        return i.reply({ content: `Loop: ${queue.loop}`, ephemeral: true });
     }
   }
 });
