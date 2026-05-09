@@ -1,7 +1,7 @@
-function pogressBar(pos, dur) {
+function progressBar(pos, dur) {
     const size = 12;
     const percent = pos / dur;
-    conts filled = Math.round(size * percent);
+    const filled = Math.round(size * percent);
 
     return "[" +
     "█".repeat(filled) +
@@ -10,4 +10,4 @@ function pogressBar(pos, dur) {
     Math.floor(percent * 100) + "%";
 }
 
-module.exports = pogressBar
+module.exports = progressBar
