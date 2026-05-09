@@ -5,7 +5,7 @@ module.exports = {
     description: "Toggles 24/7 mode for the current guild."
 
     async execute(interaction) {
-        const state = manager.247(interaction.guild.id) || false;
+        const state = manager.247.get(interaction.guild.id) || false;
 
         manager.247.set(interaction.guild.id, !state);
 
