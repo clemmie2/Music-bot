@@ -5,6 +5,7 @@ class PlayerManager {
     constructor(client) {
         this.player = new Map(); // Map of guildId to player 
         this.queues = new Map(); // Map of guildId to Queue 
+        this.["247"] = new Map(); // Map of guildId to 247 mode state
     }
 }
 
@@ -26,7 +27,6 @@ setPlayer(GuildId, player) {
 delete(GuildId) {
     this.player.delete(GuildId);
     this.queues.delete(GuildId);
-}
 }
 
 module.exports = new PlayerManager();

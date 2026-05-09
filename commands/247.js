@@ -4,9 +4,9 @@ module.exports = {
     name: "247",
 
     async execute(interaction) {
-        const state = manager.247.get(interaction.guild.id) || false;
+        const state = manager.["247"].get(interaction.guild.id) || false;
 
-        manager.247.set(interaction.guild.id, !state);
+        manager.["247"].set(interaction.guild.id, !state);
 
         interaction.reply(interaction.guild.id, !state);
 
