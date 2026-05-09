@@ -9,7 +9,7 @@ module.exports = {
             guildid: interaction.guild.id,
             channelid: interaction.member.voice.channel.id,
             shardid: interaction.guild.shardid
-        }):
+        });
 
         const result = await client.shoukaku.rest.resolve(query);
 
