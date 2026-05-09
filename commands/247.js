@@ -1,15 +1,18 @@
 const manager = require("../structures/PlayerManager");
 
 module.exports = {
-    name: "247",
+  name: "247",
+    description: "Toggle 24/7 mode",
 
-    async execute(interaction) {
-        const state = manager.["247"].get(interaction.guild.id) || false;
+      async execute(interaction) {
+        const guildId = interaction.guild.id;
 
-        manager.["247"].set(interaction.guild.id, !state);
+        const state = manager.mode247.get(guildId) || false;
 
-        interaction.reply(interaction.guild.id, !state);
+        manager.mode247.set(guildId, !state);
 
-        interaction.reply(`24/7 mode: ${!state ? "ON" : "OFF"}`);
-    }
-};
+        return interaction.reply({
+        content: `24/7 mode: ${!state ? "ON" : "OFF"}`
+    });
+  }
+  };
