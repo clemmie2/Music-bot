@@ -1,38 +1,61 @@
 # Discord Music Bot
 
-A powerful Discord music bot built with JavaScript, Discord.js, Shoukaku, and Lavalink v4.
+A production-ready Discord music bot built with JavaScript, Discord.js, Shoukaku, and Lavalink v4.
 
 ## Features
 
-### Music Playback
+## Music System
+- YouTube search support
+- Spotify search support
+- YouTube playlists
+- Spotify playlists
+- Smart search ranking
+- Multi-guild queue system
+- Auto-play next track
+- Loop mode
+- Skip tracks
+- Stop playback
+- Volume control
+- 24/7 voice mode
 
-* YouTube search support
-* Spotify search support
-* YouTube playlists
-* Spotify playlists
-* Smart search ranking
-* Multi-guild queue system
-* Auto-play next track
-* Loop mode
-* Skip tracks
-* Stop playback
+## Interactive UI
+- Live now playing embed
+- Real-time progress bar
+- Pause button
+- Resume button
+- Skip button
+- Stop button
+- Loop button
 
-### Interactive Controls
+## Moderation & Control
+- DJ permission system
+- Guild-based player sessions
+- Multi-server support
 
-* Pause button
-* Resume button
-* Skip button
-* Stop button
-* Loop button
+## Stability
+- Lavalink v4 support
+- Auto reconnect-ready structure
+- PM2 process management support
 
-### Advanced Features
+---
 
-* Live now playing embed
-* Real-time progress bar
-* 24/7 voice mode
-* Session-based player management
-* Lavalink v4 support
+## Tech Stack
 
+- JavaScript
+- Node.js 18+
+- Discord.js v14
+- Shoukaku
+- Lavalink v4
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_REPOSITORY_URL
+cd YOUR_PROJECT_NAME
 ---
 
 ## Tech Stack
